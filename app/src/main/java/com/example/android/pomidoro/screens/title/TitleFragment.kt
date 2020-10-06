@@ -10,16 +10,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.pomidoro.R
 import com.example.android.pomidoro.databinding.TitleFragmentBinding
+import com.example.android.pomidoro.screens.bottomSheet.BottomSheet
 
 class TitleFragment : Fragment() {
 
     private lateinit var viewModel: TitleViewModel
+    private lateinit var binding: TitleFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val binding: TitleFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.title_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.title_fragment, container, false)
 
         viewModel = ViewModelProvider(this).get(TitleViewModel::class.java)
 
@@ -33,6 +35,10 @@ class TitleFragment : Fragment() {
                 binding.actionButton.text = getString(R.string.loseButtonText)
             }
         })
+
+        binding.goalText.setOnClickListener {
+            BottomSheet().show(requireActivity().supportFragmentManager, BottomSheet.TAG)
+        }
 
         return binding.root
     }

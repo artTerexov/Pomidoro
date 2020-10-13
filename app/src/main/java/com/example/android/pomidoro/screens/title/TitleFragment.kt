@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.pomidoro.R
+import com.example.android.pomidoro.databinding.BottomSheetFragmentBinding
 import com.example.android.pomidoro.databinding.TitleFragmentBinding
-import com.example.android.pomidoro.screens.bottomSheet.BottomSheet
+import com.example.android.pomidoro.screens.bottomSheet.BottomSheetFragment
 
 class TitleFragment : Fragment() {
 
@@ -22,6 +23,10 @@ class TitleFragment : Fragment() {
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.title_fragment, container, false)
+
+        //inflate bottomSheetFragment
+        val bottomBinding: BottomSheetFragmentBinding = DataBindingUtil.inflate(inflater,
+            R.layout.bottom_sheet_fragment, container, false)
 
         viewModel = ViewModelProvider(this).get(TitleViewModel::class.java)
 
@@ -36,8 +41,8 @@ class TitleFragment : Fragment() {
             }
         })
 
-        binding.goalText.setOnClickListener {
-            BottomSheet().show(requireActivity().supportFragmentManager, BottomSheet.TAG)
+        binding.goalTitle.setOnClickListener {
+            BottomSheetFragment().show(requireActivity().supportFragmentManager, BottomSheetFragment.TAG)
         }
 
         return binding.root

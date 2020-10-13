@@ -9,4 +9,17 @@
         android:name="com.example.android.pomidoro.screens.title.TitleFragment"
         android:label="title_fragment"
         tools:layout="@layout/title_fragment"/>
+    <dialog
+        android:id="@+id/bottomSheetFragment2"
+        android:name="com.example.android.pomidoro.screens.bottomSheet.BottomSheetFragment"
+        android:label="BottomSheetFragment"
+        tools:layout="@layout/bottom_sheet_fragment">
+        <argument
+            android:name="timeInterval"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_bottomSheetFragment2_to_title_destination"
+            app:destination="@id/title_destination"
+            app:popUpToInclusive="true" />
+    </dialog>
 </navigation>

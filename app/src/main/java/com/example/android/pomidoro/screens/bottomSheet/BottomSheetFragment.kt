@@ -31,7 +31,6 @@ class BottomSheetFragment: BottomSheetDialogFragment() {
         val dialog = super.onCreateDialog(savedInstanceState)
 
         dialog.setOnShowListener {
-            // For AndroidX use: com.google.android.material.R.id.design_bottom_sheet
             val bottomSheet = dialog.findViewById<View>(
                 com.google.android.material.R.id.design_bottom_sheet) as? FrameLayout
             val behavior = BottomSheetBehavior.from(bottomSheet)

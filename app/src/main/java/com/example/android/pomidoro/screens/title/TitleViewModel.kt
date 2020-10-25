@@ -54,6 +54,7 @@ class TitleViewModel: ViewModel() {
 
 
     init {
+        Log.i("ViewModel", "ViewModel Init")
         _currentTime.value = DEFAULT_TIME / ONE_SECOND
         _actionButtonText.value = "Поехали"
         _goalText.value = "Выберите цель"
@@ -85,7 +86,7 @@ class TitleViewModel: ViewModel() {
         if (_taskState.value == false) {
             createTimer(_defaultTime.value!!)
             timer.start()
-            _actionButtonText.value = "Уже сдаешься?"
+            _actionButtonText.value = "Сдаешься?"
             _taskState.value = true
         } else {
             timer.cancel()

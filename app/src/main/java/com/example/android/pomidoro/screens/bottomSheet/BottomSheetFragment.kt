@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.pomidoro.R
@@ -32,6 +31,7 @@ class BottomSheetFragment: BottomSheetDialogFragment() {
         val viewModel: TitleViewModel = ViewModelProvider(requireActivity()).get(TitleViewModel::class.java)
         binding.viewModel = viewModel
 
+
         binding.goalEditText.setOnEditorActionListener { textView, i, _ ->
             if (i == EditorInfo.IME_ACTION_DONE) {
                 val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -51,7 +51,7 @@ class BottomSheetFragment: BottomSheetDialogFragment() {
 
         dialog.setOnShowListener {
             val bottomSheet = dialog.findViewById<View>(
-                com.google.android.material.R.id.design_bottom_sheet) as? FrameLayout
+                com.google.android.material.R.id.design_bottom_sheet)
             val behavior = BottomSheetBehavior.from(bottomSheet)
             behavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
